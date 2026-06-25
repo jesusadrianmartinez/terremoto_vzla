@@ -1,0 +1,79 @@
+RewriteEngine On
+
+# — Noindex para todas las URLs con parámetro s=
+<IfModule mod_headers.c>
+  # Detecta cualquier query string que incluya ?s=
+  SetEnvIf Query_String "(^|&)s=" is_search_page
+  # Aplica header X-Robots-Tag: noindex,nofollow a esas peticiones
+  Header set X-Robots-Tag "noindex, nofollow" env=is_search_page
+</IfModule>
+
+# 0) Forzar HTTPS y dominio canónico en un solo salto
+#    (cubre www., mail. y cualquier otro host)
+RewriteCond %{HTTP_HOST} !^transportedecargatop\.cl$ [OR]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://example.com%{REQUEST_URI} [R=301,L]
+
+# 1) Limpia el parámetro wordfence_lh de la query string
+RewriteCond %{QUERY_STRING} (^|&)wordfence_lh=[^&]+ [NC]
+RewriteRule ^ %{REQUEST_URI}? [L,R=301]
+
+# 2) Redirecciones 301 (rutas con slash al final → versión correcta)
+Redirect 301 /robots.txt/ /robots.txt
+Redirect 301 /sitemap.xml/ /sitemap.xml
+Redirect 301 /manifest.webmanifest/ /manifest.webmanifest
+
+# 3) Si el archivo o directorio existe, sirve el contenido directamente
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 4) /algo/  →  /algo.html  (solo si no existe archivo/carpeta)
+#    Restringimos a caracteres comunes para evitar sorpresas.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9\-/]+)/$ /$1.html [L,NC]
+
+# 5) 404 real (status code), sirviendo /404.html como ErrorDocument
+ErrorDocument 404 /404.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . - [R=404,L]
+
+# 6) Configuración de caché para recursos estáticos
+<IfModule mod_expires.c>
+   ExpiresActive On
+   ExpiresDefault "access plus 1 month"
+   ExpiresByType image/jpg "access plus 1 year"
+   ExpiresByType image/jpeg "access plus 1 year"
+   ExpiresByType image/gif "access plus 1 year"
+   ExpiresByType image/png "access plus 1 year"
+   ExpiresByType image/svg+xml "access plus 1 year"
+   ExpiresByType text/css "access plus 1 month"
+   ExpiresByType application/javascript "access plus 1 month"
+   ExpiresByType application/json "access plus 1 month"
+   ExpiresByType application/manifest+json "access plus 1 year"
+   ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# 7) Cache-Control para estáticos y para HTML (no cacheable)
+<IfModule mod_headers.c>
+   <FilesMatch "\.(ico|jpg|jpeg|png|gif|js|css|woff|woff2|ttf|svg)$">
+      Header set Cache-Control "max-age=31536000, public"
+   </FilesMatch>
+   <FilesMatch "\.(html)$">
+      Header set Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate"
+   </FilesMatch>
+</IfModule>
+
+# 8) Evitar indexación de HTML privados
+<IfModule mod_headers.c>
+   <FilesMatch "private-.*\.html$">
+      Header set X-Robots-Tag "noindex, nofollow"
+   </FilesMatch>
+</IfModule>
+
+# 9) Compresión GZIP para recursos textuales
+<IfModule mod_deflate.c>
+   AddOutputFilterByType DEFLATE text/html text/css application/javascript
+</IfModule>
