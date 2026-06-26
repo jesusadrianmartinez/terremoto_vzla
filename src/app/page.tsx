@@ -1,7 +1,5 @@
-import { Card } from "@/components/Card";
 import { Form } from "@/components/Form";
 import { Hero } from "@/components/Hero";
-import { SectionTitle } from "@/components/SectionTitle";
 
 import { emergencyData, storyData, missionData } from "@/data/sections/about";
 import { aidAreasData, stepsData } from "@/data/sections/features";
