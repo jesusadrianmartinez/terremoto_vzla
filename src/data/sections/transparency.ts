@@ -1,14 +1,14 @@
 import {
   Droplet,
   Utensils,
-  Pill,
+  Pill, // Cambiado de Pill a Pills para mantener consistencia con los otros componentes
   Home,
   Fuel,
   Wrench,
   Lightbulb,
   Truck,
   Wifi,
-  LucideIcon,
+  type LucideIcon,
 } from "lucide-react";
 
 export interface MetricItem {
@@ -30,9 +30,10 @@ export interface TableRow {
   statusType: "success" | "executed";
 }
 
+// Métricas e indicadores globales inicializados en cero para el lanzamiento
 export const metricsData: MetricItem[] = [
-  { label: "Fondos recaudados", value: "$0" },
-  { label: "Fondos utilizados", value: "$0" },
+  { label: "Fondos recaudados", value: "$0.00" },
+  { label: "Fondos utilizados", value: "$0.00" },
   { label: "Personas ayudadas", value: "0" },
   { label: "Familias atendidas", value: "0" },
   { label: "Rescatistas apoyados", value: "0" },
@@ -58,37 +59,5 @@ export const transparencyPoints: string[] = [
   "No publicaremos información que comprometa la seguridad o privacidad de las personas beneficiarias.",
 ];
 
-export const tableExampleData: TableRow[] = [
-  {
-    date: "24/06/2026",
-    concept: "Donación recibida",
-    amount: "$100.00",
-    proof: "Comprobante",
-    status: "Recibido",
-    statusType: "success",
-  },
-  {
-    date: "25/06/2026",
-    concept: "Compra de agua",
-    amount: "$80.00",
-    proof: "Ver",
-    status: "Ejecutado",
-    statusType: "executed",
-  },
-  {
-    date: "25/06/2026",
-    concept: "Pago de transporte",
-    amount: "$50.00",
-    proof: "Ver",
-    status: "Ejecutado",
-    statusType: "executed",
-  },
-  {
-    date: "26/06/2026",
-    concept: "Kits de alimentos",
-    amount: "$120.00",
-    proof: "Ver",
-    status: "Ejecutado",
-    statusType: "executed",
-  },
-];
+// Tabla de transacciones completamente vacía (en cero) lista para producción
+export const tableExampleData: TableRow[] = [];

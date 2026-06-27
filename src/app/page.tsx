@@ -1,6 +1,14 @@
+import Link from "next/link";
+import Image from "next/image";
+import { Check } from "lucide-react";
 import { Form } from "@/components/Form";
 import { Hero } from "@/components/Hero";
+import { BankDonations } from "@/components/BankDonations";
 
+import {
+  solicitarAyudaFields,
+  ofrecerAyudaFields,
+} from "@/data/form/formFields";
 import { emergencyData, storyData, missionData } from "@/data/sections/about";
 import { aidAreasData, stepsData } from "@/data/sections/features";
 import {
@@ -15,7 +23,6 @@ import {
   principlesData,
   faqsData,
 } from "@/data/sections/footerAndFaq";
-import { Check } from "lucide-react";
 
 export default function Home() {
   return (
@@ -60,8 +67,14 @@ export default function Home() {
           {/* Mi Historia (Con avatar/imagen simulada en el centro) */}
           <div className="md:col-span-5 border-x border-navy/10 px-0 md:px-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="sm:col-span-1 flex items-center justify-center">
-              <div className="w-full aspect-[3/4] bg-sand/30 rounded-2xl border border-navy/10 flex items-center justify-center text-xs font-bold text-navy/40 italic">
-                [Foto Jesús]
+              <div className="sm:col-span-1 flex items-center justify-center">
+                <Image
+                  src={storyData?.avatarUrl || "/jesus.jpeg"}
+                  alt="Jesús - Coordinador del proyecto"
+                  width={0}
+                  height={0}
+                  className="w-full h-auto aspect-3/4 object-cover border border-navy/10 shadow-sm rounded-lg"
+                />
               </div>
             </div>
             <div className="sm:col-span-2 flex flex-col justify-center">
@@ -110,7 +123,7 @@ export default function Home() {
 
       <hr className="border-navy/5 container-page mx-auto" />
 
-      {/* 2 y 3. Qué Hacemos y Cómo Funciona (Mismo bloque limpio y compacto) */}
+      {/* 2 y 3. Qué Hacemos y Cómo Funciona */}
       <section className="py-8 bg-white" id="que-hacemos">
         <div className="container-page px-4">
           <div className="grid gap-8 lg:grid-cols-12 items-start">
@@ -121,14 +134,14 @@ export default function Home() {
               </h3>
               <div className="grid gap-3 grid-cols-2 sm:grid-cols-4">
                 {aidAreasData.map((item) => {
-                  const Icon = item.icon;
+                  const IconComponent = item.icon;
                   return (
                     <div
                       key={item.title}
                       className="p-3 rounded-xl border border-navy/5 bg-[#fcfbf7]/60 flex flex-col justify-between min-h-[100px]"
                     >
                       <div className="text-teal mb-2">
-                        <Icon size={18} strokeWidth={2.5} />
+                        <IconComponent size={18} strokeWidth={2.5} />
                       </div>
                       <div>
                         <h4 className="text-xs font-bold text-navy">
@@ -171,10 +184,10 @@ export default function Home() {
 
       <hr className="border-navy/5 container-page mx-auto" />
 
-      {/* 4 y 5. Transparencia y Estado de la Ayuda (Contiguos y densos) */}
+      {/* 4 y 5. Transparencia y Estado de la Ayuda */}
       <section id="transparencia" className="py-8 bg-[#fcfbf7]">
         <div className="container-page px-4 grid gap-6 lg:grid-cols-12 items-start">
-          {/* Puntos e Tabla */}
+          {/* Puntos de Tabla */}
           <div className="lg:col-span-8 space-y-4">
             <div>
               <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-2">
@@ -233,7 +246,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Estado de la Ayuda (Métricas integradas en bloque lateral) */}
+          {/* Estado de la Ayuda (Métricas) */}
           <div className="lg:col-span-4 bg-white p-4 rounded-2xl border border-navy/10">
             <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-3 text-center lg:text-left">
               Estado de la Ayuda
@@ -262,7 +275,7 @@ export default function Home() {
 
       <hr className="border-navy/5 container-page mx-auto" />
 
-      {/* 7. Necesidades más urgentes (Tags horizontales limpios) */}
+      {/* 7. Necesidades más urgentes */}
       <section className="py-6 bg-white">
         <div className="container-page px-4">
           <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-3">
@@ -270,13 +283,13 @@ export default function Home() {
           </h3>
           <div className="flex flex-wrap gap-2">
             {urgentNeedsData.map((need) => {
-              const Icon = need.icon;
+              const IconComponent = need.icon;
               return (
                 <span
                   key={need.label}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-navy/5 bg-[#fcfbf7] px-3 py-1.5 text-xs font-bold text-navy shadow-2xs"
                 >
-                  <Icon size={13} className="text-teal" />
+                  <IconComponent size={13} className="text-teal" />
                   {need.label}
                 </span>
               );
@@ -287,51 +300,67 @@ export default function Home() {
 
       <hr className="border-navy/5 container-page mx-auto" />
 
-      {/* 8 y 9. Donar y Formularios (Unificados estructuralmente en una grilla densa) */}
+      {/* 8 y 9. Donar y Formularios */}
       <section id="donar" className="py-8 bg-[#fcfbf7]">
         <div className="container-page px-4 grid gap-6 lg:grid-cols-12 items-start">
           {/* Métodos de Donación */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="bg-white p-4 rounded-2xl border border-navy/10">
-              <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-3">
-                Donar (Binance / Cripto)
-              </h3>
-              <div className="space-y-1.5 text-xs font-medium text-navy">
-                {cryptoData.map((crypto) => (
-                  <div
-                    key={crypto.label}
-                    className="flex justify-between items-center border-b border-navy/5 pb-1"
-                  >
-                    <span className="text-navy/60 font-bold">
-                      {crypto.label}:
-                    </span>
-                    <span className="font-mono text-[11px] select-all break-all text-right max-w-[180px]">
-                      {crypto.value}
-                    </span>
-                  </div>
-                ))}
+            {/* Fila de QRs Digitales Internacionales */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              {/* Tarjeta / Stripe QR */}
+              <div className="bg-white p-4 rounded-2xl border border-navy/10 flex flex-col justify-between items-center text-center">
+                <div className="w-full">
+                  <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-1">
+                    Tarjeta de Crédito
+                  </h3>
+                  <p className="text-[10px] text-navy/50 font-medium mb-3">
+                    A través de Stripe
+                  </p>
+                </div>
+                <div className="relative w-50 h-50 overflow-hidden rounded-lg bg-white border border-navy/10 mb-2">
+                  <Image
+                    src="/qr-stripe.jpg"
+                    alt="QR Stripe"
+                    fill
+                    className="object-contain p-1"
+                  />
+                </div>
+                <Link
+                  href="https://donate.stripe.com/fZu7sLgkH0yv8QXddq4800a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] font-bold text-coral hover:underline"
+                >
+                  Enlace directo →
+                </Link>
+              </div>
+
+              {/* Cripto / Binance QR */}
+              <div className="bg-white p-4 rounded-2xl border border-navy/10 flex flex-col justify-between items-center text-center">
+                <div className="w-full">
+                  <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-1">
+                    Criptomonedas
+                  </h3>
+                  <p className="text-[10px] text-navy/50 font-medium mb-3">
+                    Binance Pay / UID
+                  </p>
+                </div>
+                <div className="relative w-50 h-50 overflow-hidden rounded-lg bg-white border border-navy/10 mb-2">
+                  <Image
+                    src="/qr-binance.jpg"
+                    alt="QR Binance"
+                    fill
+                    className="object-contain p-1"
+                  />
+                </div>
+                <span className="text-[9px] font-mono font-bold text-navy/60">
+                  UID: 136521900
+                </span>
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-2xl border border-navy/10">
-              <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-2">
-                Transferencias Bancarias
-              </h3>
-              <div className="flex flex-wrap gap-1 mb-2">
-                {donationCountries.map((c) => (
-                  <button
-                    key={c}
-                    type="button"
-                    className="rounded-lg bg-sand/30 hover:bg-sand/60 px-2.5 py-1 text-[11px] font-bold text-navy transition-colors"
-                  >
-                    {c}
-                  </button>
-                ))}
-              </div>
-              <p className="text-[10px] font-medium text-navy/60 bg-[#fcfbf7] p-2 rounded-lg border border-navy/5 italic">
-                Info bancaria desplegable según país.
-              </p>
-            </div>
+            {/* Cuentas Bancarias Dinámicas e Interactivas */}
+            <BankDonations />
           </div>
 
           {/* Formulario Solicitar */}
@@ -346,13 +375,9 @@ export default function Home() {
               Solo para familias afectadas directamente.
             </p>
             <Form
-              fields={[
-                "Nombre completo",
-                "Teléfono / WhatsApp",
-                "Ubicación",
-                "Necesidades prioritarias",
-              ]}
+              fields={solicitarAyudaFields}
               button="Enviar solicitud"
+              formType="solicitar_ayuda"
             />
           </div>
 
@@ -368,13 +393,9 @@ export default function Home() {
               Voluntarios y logística.
             </p>
             <Form
-              fields={[
-                "Nombre",
-                "Ubicación",
-                "Teléfono",
-                "¿Cómo deseas colaborar?",
-              ]}
+              fields={ofrecerAyudaFields}
               button="Ofrecer ayuda"
+              formType="ofrecer_ayuda"
             />
           </div>
         </div>
@@ -407,10 +428,13 @@ export default function Home() {
               </h3>
               <ul className="grid grid-cols-2 gap-1.5 text-[11px] font-medium text-navy/80">
                 {principlesData.map((p) => {
-                  const Icon = p.icon;
+                  const IconComponent = p.icon;
                   return (
                     <li key={p.text} className="flex items-center gap-1.5">
-                      <Icon size={12} className="text-coral shrink-0" />
+                      <IconComponent
+                        size={12}
+                        className="text-coral shrink-0"
+                      />
                       <span className="truncate">{p.text}</span>
                     </li>
                   );
@@ -428,9 +452,9 @@ export default function Home() {
               {faqsData.slice(0, 5).map((faq) => (
                 <details
                   key={faq.question}
-                  className="group rounded-xl border border-navy/10 bg-[#fcfbf7] p-3 [&_summary::-webkit-details-marker]:hidden"
+                  className="group rounded-xl border border-navy/10 bg-[#fcfbf7] p-3 list-none [&_summary::-webkit-details-marker]:hidden"
                 >
-                  <summary className="flex cursor-pointer items-center justify-between text-xs font-bold text-navy outline-none">
+                  <summary className="flex cursor-pointer items-center justify-between text-xs font-bold text-navy outline-none list-none">
                     <span>{faq.question}</span>
                     <span className="text-teal text-xs group-open:rotate-180 transition-transform">
                       ▼
@@ -455,18 +479,20 @@ export default function Home() {
             sea, puede convertirse en agua, alimentos, refugio o herramientas."
           </p>
           <div className="mt-4 flex justify-center gap-3">
-            <a
-              href="#donar"
+            <Link
+              href="https://donate.stripe.com/fZu7sLgkH0yv8QXddq4800a"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-xl bg-coral px-5 py-2.5 text-xs font-black text-white hover:bg-[#d85f41] transition-colors shadow-lg shadow-coral/10"
             >
               Donar ahora
-            </a>
-            <a
+            </Link>
+            {/* <Link
               href="#ofrecer"
               className="rounded-xl bg-teal px-5 py-2.5 text-xs font-black text-white hover:bg-teal/80 transition-colors"
             >
               Ofrecer ayuda
-            </a>
+            </Link> */}
           </div>
         </div>
       </section>

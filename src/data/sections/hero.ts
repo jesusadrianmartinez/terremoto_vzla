@@ -10,7 +10,8 @@ export const heroData: HeroData = {
   eyebrow: "La Guaira Help",
   tagline: "Ayuda directa a familias afectadas",
   title: "LA GUAIRA HELP",
-  subtitle: "Ayuda directa. Transparencia total. Esperanza para La Guaira.",
+  subtitle:
+    "Ayuda directa. Transparencia total. Solidaridad real para La Guaira.",
   description:
-    "Una iniciativa ciudadana para brindar ayuda inmediata a las familias afectadas por el terremoto del 24 de junio de 2026 en Venezuela.",
+    "Iniciativa ciudadana nacida para canalizar apoyo inmediato y recursos esenciales directamente a las familias afectadas por el terremoto del 24 de junio de 2026 en Venezuela.",
 };

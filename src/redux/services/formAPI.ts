@@ -1,10 +1,22 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-type FormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
+type SolicitarAyudaPayload = {
+  formType: "solicitar_ayuda";
+  fullName: string;
+  phone: string;
+  location: string;
+  needs: string;
 };
+
+type OfrecerAyudaPayload = {
+  formType: "ofrecer_ayuda";
+  firstName: string;
+  location: string;
+  phone: string;
+  collaboration: string;
+};
+
+type FormData = SolicitarAyudaPayload | OfrecerAyudaPayload;
 
 export const formApi = createApi({
   reducerPath: "formApi",

@@ -2,6 +2,7 @@ export interface AboutSection {
   title: string;
   paragraphs?: string[];
   author?: string;
+  avatarUrl?: string;
   context?: string;
   details?: string[];
   highlight?: string;
@@ -12,24 +13,24 @@ export interface AboutSection {
 export const emergencyData: AboutSection = {
   title: "Emergencia Humanitaria",
   paragraphs: [
-    "El terremoto del 24 de junio de 2026 cambió la vida de miles de familias venezolanas en cuestión de segundos.",
-    "Mientras continúan las labores de búsqueda y rescate, muchas personas permanecen sin acceso a agua potable, alimentos, medicamentos, transporte o un lugar seguro donde dormir.",
-    "En muchas comunidades, los primeros en responder han sido los propios vecinos, familiares y voluntarios, quienes continúan trabajando con recursos muy limitados.",
-    "La Guaira Help nace para convertir la solidaridad de personas dentro y fuera de Venezuela en ayuda directa para quienes más la necesitan.",
+    "El terremoto del 24 de junio de 2026 cambió la vida de miles de familias venezolanas.",
+    "Muchas personas siguen sin acceso a agua, alimentos, medicamentos, transporte o un lugar seguro donde dormir.",
+    "Vecinos, familiares y voluntarios son los primeros en responder con recursos limitados.",
+    "La Guaira Help nace para convertir la solidaridad en ayuda directa.",
   ],
 };
 
-// 2. Mi Historia (Estructurado para el render de autores)
+// 2. Por qué nace La Guaira Help (Historia Corregida)
 export const storyData: AboutSection = {
-  title: "Mi historia",
+  title: "Por qué nace La Guaira Help",
   author: "Jesús Adrián Martínez Lozada",
-  context:
-    "venezolano, ingeniero y emprendedor. Actualmente coordino proyectos entre Montreal, Canadá, y Chile.",
+  avatarUrl: "/jesus.jpeg",
+  context: "familiar de personas directamente afectadas por el sismo.",
   details: [
-    "El 24 de junio de 2026 mi madre se encontraba en el apartamento 8-A del edificio Rita Mar Palace, en El Palmar Oeste, La Guaira, cuando ocurrió el terremoto.",
-    "Hasta este momento no hemos podido confirmar su situación. Vecinos y voluntarios continúan removiendo escombros con recursos muy limitados en la búsqueda de sobrevivientes.",
-    "La madre de mi esposa, Mónica, también quedó atrapada en Playa Grande durante el terremoto y lamentablemente fue encontrada sin vida.",
-    "Como muchos venezolanos en el exterior, la distancia me impide ayudar físicamente. Por esa razón decidimos crear La Guaira Help.",
+    "Mi madre se encontraba en el edificio Rita Mar Palace, en El Palmar Oeste, cuando ocurrió el terremoto. Hasta este momento no hemos podido confirmar su situación.",
+    "La madre de mi esposa, Mónica, también quedó atrapada durante el terremoto en Playa Grande y lamentablemente fue encontrada sin vida.",
+    "Esta iniciativa nace desde el dolor, la incertidumbre y la necesidad urgente de actuar.",
+    "La Guaira Help busca canalizar ayuda directa para familias afectadas y para las personas que continúan realizando labores de apoyo, rescate y verificación en las zonas más golpeadas.",
   ],
   highlight:
     "No representamos a ningún partido político, organización gubernamental ni institución religiosa. Solo queremos ayudar.",

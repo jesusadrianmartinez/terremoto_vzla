@@ -33,7 +33,9 @@ export function Hero() {
           {/* Botones de Acción */}
           <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-4">
             <Link
-              href="#donar"
+              href="https://donate.stripe.com/fZu7sLgkH0yv8QXddq4800a"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#E86F51] px-8 py-4 text-lg font-black text-white shadow-xl shadow-[#E86F51]/30 transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#d85f41]"
             >
               <svg
@@ -47,13 +49,14 @@ export function Hero() {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  pathLength="none"
                   d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
                 />
               </svg>
               Donar ahora
             </Link>
 
-            <Link
+            {/* <Link
               href="#transparencia"
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[#0B3A53]/15 bg-white px-8 py-4 text-lg font-bold text-[#0B3A53] shadow-sm transition-all duration-200 hover:bg-[#0B3A53]/5"
             >
@@ -72,36 +75,34 @@ export function Hero() {
                 />
               </svg>
               Emergencia Humanitaria
-            </Link>
+            </Link> */}
           </div>
         </div>
 
-        {/* Bloque Derecho: Imagen Fotográfica Original u Optimización Visual */}
+        {/* Bloque Derecho: Imagen Fotográfica con Superposición Optimizada */}
         <div className="relative aspect-4/3 w-full overflow-hidden rounded-[2.5rem] shadow-2xl shadow-[#0B3A53]/10 lg:aspect-square">
-          {/* OPCIÓN A: Si pones la fotografía real de la landing original */}
-          {/* 
-          <Image 
-            src="/hero-volunteers.jpg" 
-            alt="Voluntarios entregando cajas de ayuda de La Guaira Help"
+          {/* Fotografía real nítida en el fondo */}
+          <Image
+            src="/la-guaira.jpg"
+            alt="La Guaira Help - Vista de la región afectada"
             fill
             className="object-cover"
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-          /> 
-          */}
+          />
 
-          {/* OPCIÓN B: Tu diseño de tarjeta actual ultra estilizado con cristalería (Glassmorphism) */}
-          <div className="absolute inset-0 bg-linear-to-br from-[#F2E6D0] to-[#1FA6A8]/20" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.4),transparent_40%)]" />
+          {/* Variación: Degradado oscuro sutil solo en la base para dar contraste al texto sin lavar la foto */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B3A53]/80 via-[#0B3A53]/20 to-transparent" />
 
-          <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/70 p-6 backdrop-blur-md border border-white/40 md:p-8">
-            <span className="text-5xl" role="img" aria-label="solidaridad">
+          {/* Tarjeta inferior con opacidad equilibrada y textos en contraste claro */}
+          <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/90 p-6 backdrop-blur-sm border border-white/20 md:p-8 shadow-lg">
+            <span className="text-4xl" role="img" aria-label="solidaridad">
               🤝
             </span>
-            <h2 className="mt-4 text-2xl font-black text-[#0B3A53] md:text-3xl leading-tight">
+            <h2 className="mt-3 text-2xl font-black text-[#0B3A53] md:text-3xl leading-tight">
               Solidaridad convertida en acción.
             </h2>
-            <p className="mt-2 text-sm md:text-base font-medium text-[#0B3A53]/80 leading-relaxed">
+            <p className="mt-2 text-sm font-semibold text-[#0B3A53]/85 leading-relaxed">
               Apoyo directo, comprobantes públicos y actualización constante en
               tiempo real para todas las familias afectadas de la región.
             </p>

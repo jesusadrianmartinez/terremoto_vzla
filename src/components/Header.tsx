@@ -49,7 +49,9 @@ export function Header() {
 
         {/* Botón de Acción Principal */}
         <Link
-          href="#donar"
+          href="https://donate.stripe.com/fZu7sLgkH0yv8QXddq4800a"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-xl bg-[#E86F51] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#E86F51]/25 transition-all duration-200 hover:bg-[#d85f41] hover:shadow-[#E86F51]/40"
         >
           {/* Reemplacé el emoji nativo por un SVG embebido idéntico al de la landing original */}

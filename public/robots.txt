@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://laguaira.help/
+
+# Sitemaps
+Sitemap: https://laguaira.help/sitemap.xml

@@ -18,17 +18,19 @@ export function Footer() {
           </p>
           <div className="flex flex-wrap gap-3 sm:flex-nowrap">
             <Link
-              href="#donar"
+              href="https://donate.stripe.com/fZu7sLgkH0yv8QXddq4800a"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full text-center sm:w-auto rounded-xl bg-[#E86F51] px-6 py-3 text-sm font-bold text-white transition-colors duration-200 hover:bg-[#d85f41] shadow-md shadow-[#E86F51]/10"
             >
               Donar ahora
             </Link>
-            <Link
+            {/* <Link
               href="#ofrecer"
               className="w-full text-center sm:w-auto rounded-xl bg-[#1FA6A8] px-6 py-3 text-sm font-bold text-white transition-colors duration-200 hover:bg-[#178B8D] shadow-md shadow-[#1FA6A8]/10"
             >
               Ofrecer ayuda
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
@@ -84,19 +86,19 @@ export function Footer() {
           <h3 className="font-black text-[#0B3A53] tracking-tight">Contacto</h3>
           <div className="mt-4 flex flex-col gap-2.5 text-sm font-medium text-[#0B3A53]/70">
             <a
-              href="mailto:hola@laguairahelp.org"
+              href="mailto:contacto@laguaira.help"
               className="transition-colors hover:text-[#1FA6A8] flex items-center gap-1"
             >
-              hola@laguairahelp.org
+              contacto@laguaira.help
             </a>
-            <a
+            {/* <a
               href="https://wa.me/584121234567"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-[#1FA6A8]"
             >
               +58 412-1234567
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

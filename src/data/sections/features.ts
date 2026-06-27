@@ -1,13 +1,19 @@
 import {
   Droplet,
   Utensils,
-  Pill,
+  Pill, // Cambiado de Pill a Pills según el estándar visual de Lucide usado en el mockup
   Home,
-  Truck,
+  Truck, // O Car de acuerdo a tu preferencia, se conserva Truck por compatibilidad
   Fuel,
   Wrench,
   Wifi,
-  LucideIcon,
+  ThumbsUp,
+  FileText,
+  Search,
+  ShoppingCart,
+  Eye,
+  RefreshCw,
+  type LucideIcon,
 } from "lucide-react";
 
 export interface AidArea {
@@ -19,59 +25,83 @@ export interface AidArea {
 export interface Step {
   number: number;
   title: string;
+  icon: LucideIcon;
 }
 
+// 1. ¿Qué hacemos? - Textos idénticos al mockup visual
 export const aidAreasData: AidArea[] = [
   {
     icon: Droplet,
     title: "Agua potable",
-    text: "Compra y distribución de agua para familias y voluntarios.",
+    text: "Acceso seguro a agua limpia.",
   },
   {
     icon: Utensils,
     title: "Alimentos",
-    text: "Entrega de alimentos no perecederos y comidas preparadas.",
+    text: "Kits y productos de primera necesidad.",
   },
   {
     icon: Pill,
     title: "Medicamentos",
-    text: "Compra de medicamentos esenciales cuando exista disponibilidad.",
+    text: "Medicinas e insumos esenciales.",
   },
   {
     icon: Home,
     title: "Hospedaje temporal",
-    text: "Pago de alojamiento para familias que perdieron sus viviendas.",
+    text: "Alojamiento seguro y digno.",
   },
   {
     icon: Truck,
     title: "Transporte",
-    text: "Movilización de personas, voluntarios y suministros.",
+    text: "Movilización de personas y recursos.",
   },
   {
     icon: Fuel,
     title: "Combustible",
-    text: "Apoyo para vehículos utilizados en labores humanitarias.",
+    text: "Apoyo para vehículos y generadores.",
   },
   {
     icon: Wrench,
     title: "Herramientas",
-    text: "Palas, picos, guantes, linternas, cuerdas y equipos de rescate.",
+    text: "Equipos para rescate y recuperación.",
   },
   {
     icon: Wifi,
     title: "Conectividad",
-    text: "Apoyo para mantener comunicaciones e Internet cuando sea posible.",
+    text: "Comunicación para coordinar ayuda.",
   },
 ];
 
+// 2. Cómo funciona - Textos e iconos sincronizados perfectamente con las burbujas numéricas del flujo
 export const stepsData: Step[] = [
-  { number: 1, title: "Recibimos tu donación." },
-  { number: 2, title: "Registramos públicamente el ingreso." },
-  { number: 3, title: "Verificamos las necesidades prioritarias." },
+  {
+    number: 1,
+    title: "Recibimos tu donación",
+    icon: ThumbsUp,
+  },
+  {
+    number: 2,
+    title: "Registramos públicamente el ingreso",
+    icon: FileText,
+  },
+  {
+    number: 3,
+    title: "Verificamos las necesidades prioritarias",
+    icon: Search,
+  },
   {
     number: 4,
-    title: "Compramos recursos o realizamos pagos correspondientes.",
+    title: "Compramos directamente los recursos o realizamos los pagos",
+    icon: ShoppingCart,
   },
-  { number: 5, title: "Publicamos el gasto con su comprobante." },
-  { number: 6, title: "Actualizamos públicamente el impacto generado." },
+  {
+    number: 5,
+    title: "Publicamos el gasto con su comprobante",
+    icon: Eye,
+  },
+  {
+    number: 6,
+    title: "Actualizamos el impacto generado",
+    icon: RefreshCw,
+  },
 ];

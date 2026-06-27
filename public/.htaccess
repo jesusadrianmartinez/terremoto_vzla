@@ -8,15 +8,18 @@ RewriteEngine On
   Header set X-Robots-Tag "noindex, nofollow" env=is_search_page
 </IfModule>
 
-# 0) Forzar HTTPS y dominio canónico en un solo salto
-#    (cubre www., mail. y cualquier otro host)
-RewriteCond %{HTTP_HOST} !^transportedecargatop\.cl$ [OR]
+# 0) CORREGIDO: Forzar HTTPS y tu dominio real (laguaira.help) en un solo salto
+RewriteCond %{HTTP_HOST} !^laguaira\.help$ [OR]
 RewriteCond %{HTTPS} off
-RewriteRule ^ https://example.com%{REQUEST_URI} [R=301,L]
+RewriteRule ^ https://laguaira.help%{REQUEST_URI} [R=301,L]
 
 # 1) Limpia el parámetro wordfence_lh de la query string
 RewriteCond %{QUERY_STRING} (^|&)wordfence_lh=[^&]+ [NC]
 RewriteRule ^ %{REQUEST_URI}? [L,R=301]
+
+# 1b) ENLACES CORTOS / REDIRECCIONES EXTERNAS
+# Redirige /donacion o /donacion/ directamente a Bitly
+RewriteRule ^donacion/?$ http://bit.ly/laguairahelp [R=301,L]
 
 # 2) Redirecciones 301 (rutas con slash al final → versión correcta)
 Redirect 301 /robots.txt/ /robots.txt
@@ -28,17 +31,20 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# 4) /algo/  →  /algo.html  (solo si no existe archivo/carpeta)
-#    Restringimos a caracteres comunes para evitar sorpresas.
+# 4) Adaptado para Next.js con trailingSlash: true
+# Si entran sin barra al final (ej: /contacto), fuerza la barra con un 301 limpio
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([a-z0-9\-/]+)/$ /$1.html [L,NC]
+RewriteCond %{REQUEST_URI} !^.*/$
+RewriteRule ^(.*)$ /$1/ [R=301,L]
 
-# 5) 404 real (status code), sirviendo /404.html como ErrorDocument
-ErrorDocument 404 /404.html
+# 5) Enrutamiento interno SPA
+# Busca el archivo index.html dentro de la carpeta correspondiente en silencio
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . - [R=404,L]
+RewriteRule ^(.*)/$ /$1/index.html [L]
+
+# 5b) Manejo de errores 404 real si la ruta no existe en el build
+ErrorDocument 404 /404.html
 
 # 6) Configuración de caché para recursos estáticos
 <IfModule mod_expires.c>
