@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, FormEvent } from "react";
+import { useAppSelector } from "@/redux/hooks";
 import { useSendDataMutation } from "@/redux/services/formAPI";
 import { FormField } from "@/types/FormFieldType";
 
@@ -28,12 +29,32 @@ type FormData = SolicitarAyudaPayload | OfrecerAyudaPayload;
 interface FormProps {
   fields: FormField[];
   button: string;
-  // Cambiado para que coincida exactamente con las propiedades literales de los payloads
   formType: "solicitar_ayuda" | "ofrecer_ayuda";
 }
 
+// Mensajes de estado del formulario internacionalizados
+const statusTranslations = {
+  es: {
+    loading: "Enviando...",
+    error: "No se pudo procesar la solicitud. Inténtalo de nuevo.",
+    success: "¡Registrado con éxito! Gracias por tu apoyo.",
+  },
+  en: {
+    loading: "Sending...",
+    error: "Could not process your request. Please try again.",
+    success: "Successfully registered! Thank you for your support.",
+  },
+  fr: {
+    loading: "Envoi en cours...",
+    error: "Impossible de traiter la demande. Veuillez réessayer.",
+    success: "Enregistré avec succès ! Merci pour votre soutien.",
+  },
+};
+
 export function Form({ fields, button, formType }: FormProps) {
-  const language = "es";
+  // Extraemos dinámicamente el idioma del estado global de Redux
+  const language = useAppSelector((state) => state.languageReducer.language) || "es";
+  const statusText = statusTranslations[language] || statusTranslations.es;
 
   const [sendData, { isLoading, isSuccess, isError, reset }] =
     useSendDataMutation();
@@ -56,7 +77,7 @@ export function Form({ fields, button, formType }: FormProps) {
 
     for (const rule of field.rules ?? []) {
       if (rule.type === "required" && !trimmedValue) {
-        return rule.message[language];
+        return rule.message[language] || rule.message["es"];
       }
 
       if (
@@ -64,7 +85,7 @@ export function Form({ fields, button, formType }: FormProps) {
         typeof rule.value === "number" &&
         trimmedValue.length < rule.value
       ) {
-        return rule.message[language];
+        return rule.message[language] || rule.message["es"];
       }
 
       if (
@@ -74,7 +95,7 @@ export function Form({ fields, button, formType }: FormProps) {
       ) {
         const pattern = new RegExp(rule.value);
         if (!pattern.test(trimmedValue)) {
-          return rule.message[language];
+          return rule.message[language] || rule.message["es"];
         }
       }
     }
@@ -152,7 +173,6 @@ export function Form({ fields, button, formType }: FormProps) {
     }
   };
 
-  // Mantenemos la lógica de colores basada en el valor tipado corregido
   const isOfrecer = formType === "ofrecer_ayuda";
   const buttonStyle = isOfrecer
     ? "bg-teal hover:bg-teal/90 shadow-teal/15"
@@ -174,7 +194,7 @@ export function Form({ fields, button, formType }: FormProps) {
               htmlFor={fieldId}
               className="block text-[11px] font-black uppercase tracking-wider text-navy/70"
             >
-              {field.label[language]}
+              {field.label[language] || field.label["es"]}
             </label>
 
             <input
@@ -185,7 +205,7 @@ export function Form({ fields, button, formType }: FormProps) {
               value={values[field.key] ?? ""}
               onChange={(event) => handleChange(field.key, event.target.value)}
               onBlur={() => handleBlur(field.key)}
-              placeholder={field.placeholder?.[language] ?? ""}
+              placeholder={field.placeholder?.[language] ?? field.placeholder?.["es"] ?? ""}
               aria-invalid={Boolean(error)}
               aria-describedby={error ? `${fieldId}-error` : undefined}
               className={`w-full rounded-xl border bg-[#fcfbf7]/50 px-3 py-2 text-xs font-medium text-navy outline-none transition ${
@@ -213,18 +233,18 @@ export function Form({ fields, button, formType }: FormProps) {
           disabled={isLoading}
           className={`w-full inline-flex h-9 items-center justify-center rounded-xl px-4 text-xs font-bold text-white shadow-lg transition-all disabled:opacity-50 ${buttonStyle}`}
         >
-          {isLoading ? "Enviando..." : button}
+          {isLoading ? statusText.loading : button}
         </button>
 
         {isError && (
           <p className="mt-2 text-center text-[10px] font-bold text-red-600">
-            No se pudo procesar la solicitud. Inténtalo de nuevo.
+            {statusText.error}
           </p>
         )}
 
         {isSuccess && (
           <p className="mt-2 text-center text-[10px] font-bold text-teal">
-            ¡Registrado con éxito! Gracias por tu apoyo.
+            {statusText.success}
           </p>
         )}
       </div>

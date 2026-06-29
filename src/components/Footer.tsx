@@ -1,36 +1,40 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useAppSelector } from "@/redux/hooks";
+import { footerTranslations } from "@/data/sections/footer";
+
+const FOOTER_LINKS = [
+  { key: "inicio", href: "#inicio" },
+  { key: "transparencia", href: "#transparencia" },
+  { key: "solicitar", href: "#solicitar" },
+  { key: "ofrecer", href: "#ofrecer" },
+] as const;
 
 export function Footer() {
+  const language =
+    useAppSelector((state) => state.languageReducer.language) || "es";
+  const t = footerTranslations[language] || footerTranslations.es;
+
   return (
-    <footer className="w-full bg-[#FAFAF7]">
+    <footer className="w-full bg-cream">
       {/* Franja Superior de Conversión / Llamado a la Acción */}
-      <div className="bg-[#0B3A53] text-white">
+      <div className="bg-navy text-white">
         <div className="container-page flex flex-col gap-6 px-4 py-8 md:grid md:grid-cols-[1fr_1.4fr_auto] md:items-center md:gap-8">
           <p className="text-base font-bold leading-snug md:text-lg">
-            El terremoto ha dejado a muchas familias enfrentando pérdidas,
-            incertidumbre y necesidades urgentes.
+            {t.ctaHeading}
           </p>
-          <p className="text-sm text-white/80 leading-relaxed">
-            Cada aporte puede convertirse en agua, alimentos, refugio,
-            transporte o herramientas para quienes hoy siguen luchando por salir
-            adelante.
-          </p>
+          <p className="text-sm text-white/80 leading-relaxed">{t.ctaText}</p>
           <div className="flex flex-wrap gap-3 sm:flex-nowrap">
             <Link
               href="https://donate.stripe.com/fZu7sLgkH0yv8QXddq4800a"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full text-center sm:w-auto rounded-xl bg-[#E86F51] px-6 py-3 text-sm font-bold text-white transition-colors duration-200 hover:bg-[#d85f41] shadow-md shadow-[#E86F51]/10"
+              className="w-full text-center sm:w-auto rounded-xl bg-coral px-6 py-3 text-sm font-bold text-white transition-colors duration-200 hover:bg-[#d85f41] shadow-md shadow-coral/10"
             >
-              Donar ahora
+              {t.ctaButton}
             </Link>
-            {/* <Link
-              href="#ofrecer"
-              className="w-full text-center sm:w-auto rounded-xl bg-[#1FA6A8] px-6 py-3 text-sm font-bold text-white transition-colors duration-200 hover:bg-[#178B8D] shadow-md shadow-[#1FA6A8]/10"
-            >
-              Ofrecer ayuda
-            </Link> */}
           </div>
         </div>
       </div>
@@ -50,62 +54,41 @@ export function Footer() {
 
         {/* Enlaces Rápidos */}
         <div>
-          <h3 className="font-black text-[#0B3A53] tracking-tight">
-            Enlaces rápidos
+          <h3 className="font-black text-navy tracking-tight">
+            {t.quickLinksTitle}
           </h3>
-          <nav className="mt-4 flex flex-col gap-2.5 text-sm font-medium text-[#0B3A53]/70">
-            <Link
-              href="#inicio"
-              className="transition-colors hover:text-[#1FA6A8]"
-            >
-              Inicio
-            </Link>
-            <Link
-              href="#transparencia"
-              className="transition-colors hover:text-[#1FA6A8]"
-            >
-              Transparencia
-            </Link>
-            <Link
-              href="#solicitar"
-              className="transition-colors hover:text-[#1FA6A8]"
-            >
-              Solicitar ayuda
-            </Link>
-            <Link
-              href="#ofrecer"
-              className="transition-colors hover:text-[#1FA6A8]"
-            >
-              Ofrecer ayuda
-            </Link>
+          <nav className="mt-4 flex flex-col gap-2.5 text-sm font-medium text-navy/70">
+            {FOOTER_LINKS.map(({ key, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="transition-colors hover:text-teal"
+              >
+                {t.links[key]}
+              </Link>
+            ))}
           </nav>
         </div>
 
         {/* Información de Contacto */}
         <div>
-          <h3 className="font-black text-[#0B3A53] tracking-tight">Contacto</h3>
-          <div className="mt-4 flex flex-col gap-2.5 text-sm font-medium text-[#0B3A53]/70">
+          <h3 className="font-black text-navy tracking-tight">
+            {t.contactTitle}
+          </h3>
+          <div className="mt-4 flex flex-col gap-2.5 text-sm font-medium text-navy/70">
             <a
               href="mailto:contacto@laguaira.help"
-              className="transition-colors hover:text-[#1FA6A8] flex items-center gap-1"
+              className="transition-colors hover:text-teal flex items-center gap-1"
             >
               contacto@laguaira.help
             </a>
-            {/* <a
-              href="https://wa.me/584121234567"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-[#1FA6A8]"
-            >
-              +58 412-1234567
-            </a> */}
           </div>
         </div>
       </div>
 
       {/* Créditos de Cierre */}
-      <div className="border-t border-[#0B3A53]/10 py-6 text-center text-xs font-bold tracking-wide text-[#1FA6A8] bg-[#FAFAF7]">
-        La Guaira somos todos. <span className="text-[#E86F51]">❤️</span>
+      <div className="border-t border-navy/10 py-6 text-center text-xs font-bold tracking-wide text-teal bg-navy">
+        {t.closingCredits} <span className="text-coral">❤️</span>
       </div>
     </footer>
   );
