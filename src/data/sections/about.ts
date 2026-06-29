@@ -1,6 +1,7 @@
 export interface AboutData {
   title: string;
   paragraphs?: string[];
+  verb?: string;
   author?: string;
   context?: string;
   details?: string[];
@@ -43,6 +44,7 @@ export const emergencyData: Record<"es" | "en" | "fr", AboutData> = {
 export const storyData: Record<"es" | "en" | "fr", AboutData> = {
   es: {
     title: "Por qué nace La Guaira Help",
+    verb: "Soy",
     author: "Jesús Adrián Martínez Lozada",
     context: "familiar de personas directamente afectadas por el sismo.",
     details: [
@@ -58,6 +60,7 @@ export const storyData: Record<"es" | "en" | "fr", AboutData> = {
   },
   en: {
     title: "Why La Guaira Help was born",
+    verb: "I am",
     author: "Jesús Adrián Martínez Lozada",
     context: "relative of individuals directly affected by the earthquake.",
     details: [
@@ -73,6 +76,7 @@ export const storyData: Record<"es" | "en" | "fr", AboutData> = {
   },
   fr: {
     title: "Pourquoi La Guaira Help est née",
+    verb: "Je suis",
     author: "Jesús Adrián Martínez Lozada",
     context: "proche de personnes directement touchées par le séisme.",
     details: [

@@ -71,7 +71,7 @@ export const AboutSection = () => {
             </h2>
             <div className="text-xs leading-relaxed text-navy/80 space-y-2">
               <p>
-                Soy <strong>{currentStory.author}</strong>,{" "}
+                {currentStory.verb} <strong>{currentStory.author}</strong>,{" "}
                 {currentStory.context}
               </p>
               <p className="line-clamp-4">{currentStory.details?.[0]}</p>
