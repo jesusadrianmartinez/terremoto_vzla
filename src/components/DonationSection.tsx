@@ -23,10 +23,10 @@ export const DonationSection = () => {
             {/* Tarjeta / Stripe QR */}
             <div className="bg-white p-4 rounded-2xl border border-navy/10 flex flex-col justify-between items-center text-center">
               <div className="w-full">
-                <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-1">
+                <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-1">
                   {t.creditCardTitle}
                 </h3>
-                <p className="text-[10px] text-navy/50 font-medium mb-3">
+                <p className="text-xs text-navy/50 font-medium mb-3">
                   {t.creditCardSubtitle}
                 </p>
               </div>
@@ -42,7 +42,7 @@ export const DonationSection = () => {
                 href="https://donate.stripe.com/fZu7sLgkH0yv8QXddq4800a"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[10px] font-bold text-coral hover:underline"
+                className="text-xs font-bold text-coral hover:underline"
               >
                 {t.directLink}
               </Link>
@@ -51,10 +51,10 @@ export const DonationSection = () => {
             {/* Cripto / Binance QR */}
             <div className="bg-white p-4 rounded-2xl border border-navy/10 flex flex-col justify-between items-center text-center">
               <div className="w-full">
-                <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-1">
+                <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-1">
                   {t.cryptoTitle}
                 </h3>
-                <p className="text-[10px] text-navy/50 font-medium mb-3">
+                <p className="text-xs text-navy/50 font-medium mb-3">
                   {t.cryptoSubtitle}
                 </p>
               </div>
@@ -66,7 +66,7 @@ export const DonationSection = () => {
                   className="object-contain p-1"
                 />
               </div>
-              <span className="text-[9px] font-mono font-bold text-navy/60">
+              <span className="text-xs font-mono font-bold text-navy/60">
                 UID: 136521900
               </span>
             </div>
@@ -80,10 +80,10 @@ export const DonationSection = () => {
           className="lg:col-span-6 bg-white p-4 rounded-2xl border border-navy/10"
           id="ofrecer"
         >
-          <h3 className="text-xs font-black uppercase tracking-wider text-navy">
+          <h3 className="text-sm font-black uppercase tracking-wider text-navy">
             {t.formTitle}
           </h3>
-          <p className="text-[10px] text-navy/60 mb-3">{t.formSubtitle}</p>
+          <p className="text-xs text-navy/60 mb-3">{t.formSubtitle}</p>
           <Form
             fields={ofrecerAyudaFields}
             button={t.formButton}

@@ -192,7 +192,7 @@ export function Form({ fields, button, formType }: FormProps) {
           <div key={field.key} className="space-y-1">
             <label
               htmlFor={fieldId}
-              className="block text-[11px] font-black uppercase tracking-wider text-navy/70"
+              className="block text-xs font-black uppercase tracking-wider text-navy/70"
             >
               {field.label[language] || field.label["es"]}
             </label>

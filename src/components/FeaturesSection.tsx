@@ -51,7 +51,7 @@ export const FeaturesSection = () => {
         <div className="grid gap-8 lg:grid-cols-12 items-start">
           {/* Qué hacemos */}
           <div className="lg:col-span-6">
-            <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-4">
+            <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-4">
               {t.whatWeDoTitle}
             </h3>
             <div className="grid gap-3 grid-cols-2 sm:grid-cols-3">
@@ -63,13 +63,13 @@ export const FeaturesSection = () => {
                     className="p-3 rounded-xl border border-navy/5 bg-[#fcfbf7]/60 flex flex-col justify-start min-h-26.25"
                   >
                     <div className="text-teal mb-2">
-                      <IconComponent size={24} strokeWidth={2.5} />
+                      <IconComponent size={30} strokeWidth={2.5} />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-navy">
+                      <h4 className="text-sm font-bold text-navy">
                         {item.title}
                       </h4>
-                      <p className="text-[10px] text-navy/60 mt-0.5 leading-tight">
+                      <p className="text-xs text-navy/60 mt-0.5 leading-tight">
                         {item.text}
                       </p>
                     </div>
@@ -81,10 +81,10 @@ export const FeaturesSection = () => {
 
           {/* Cómo funciona */}
           <div className="lg:col-span-6">
-            <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-4">
+            <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-4">
               {t.howItWorksTitle}
             </h3>
-            <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-2 gap-2">
               {t.steps.map((step) => {
                 const StepIcon = STEP_ICON_MAP[step.number] || ThumbsUp;
                 return (
@@ -92,13 +92,13 @@ export const FeaturesSection = () => {
                     key={step.number}
                     className="p-2 rounded-xl bg-cream/40 border border-navy/5 text-center flex flex-col items-center justify-start min-h-25"
                   >
-                    <div className="mb-1 flex h-6 w-6 items-center justify-center rounded-full bg-teal text-[10px] font-black text-white relative">
+                    <div className="mb-1 flex h-6 w-6 items-center justify-center rounded-full bg-teal text-xs font-black text-white relative">
                       {step.number}
                     </div>
                     <div className="text-teal/40 mb-1">
-                      <StepIcon size={24} strokeWidth={2} />
+                      <StepIcon size={30} strokeWidth={2} />
                     </div>
-                    <p className="text-xs font-bold text-navy leading-tight">
+                    <p className="text-sm font-bold text-navy leading-tight">
                       {step.title}
                     </p>
                   </div>

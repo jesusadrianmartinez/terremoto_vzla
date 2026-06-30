@@ -19,7 +19,7 @@ export const TeamAndFaqSection = () => {
         {/* Equipo y Principios */}
         <div className="lg:col-span-6 space-y-4">
           <div className="bg-[#fcfbf7] p-4 rounded-2xl border border-navy/10">
-            <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-2">
+            <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-2">
               {labels.teamTitle}
             </h3>
             <div className="text-xs text-navy/80 space-y-1">
@@ -27,7 +27,7 @@ export const TeamAndFaqSection = () => {
                 <strong>{labels.coordinationLabel}:</strong>{" "}
                 {teamData.coordination[language] || teamData.coordination["es"]}
               </p>
-              <p className="text-[11px] leading-tight">
+              <p className="text-xs leading-tight">
                 <strong>{labels.venezuelaLabel}:</strong>{" "}
                 {teamData.venezuela[language] || teamData.venezuela["es"]}
               </p>
@@ -35,10 +35,10 @@ export const TeamAndFaqSection = () => {
           </div>
 
           <div className="bg-[#fcfbf7] p-4 rounded-2xl border border-navy/10">
-            <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-2">
+            <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-2">
               {labels.principlesTitle}
             </h3>
-            <ul className="grid grid-cols-2 gap-1.5 text-[11px] font-medium text-navy/80">
+            <ul className="grid grid-cols-2 gap-1.5 text-xs font-medium text-navy/80">
               {principlesData.map((p, index) => {
                 const IconComponent = p.icon;
                 const textTranslation = p.text[language] || p.text["es"];
@@ -57,7 +57,7 @@ export const TeamAndFaqSection = () => {
 
         {/* FAQs Acordeón */}
         <div className="lg:col-span-6">
-          <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-3">
+          <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-3">
             {labels.faqTitle}
           </h3>
           <div className="space-y-1.5">
@@ -70,13 +70,13 @@ export const TeamAndFaqSection = () => {
                   key={index}
                   className="group rounded-xl border border-navy/10 bg-[#fcfbf7] p-3 list-none [&_summary::-webkit-details-marker]:hidden"
                 >
-                  <summary className="flex cursor-pointer items-center justify-between text-xs font-bold text-navy outline-none list-none">
+                  <summary className="flex cursor-pointer items-center justify-between text-sm font-bold text-navy outline-none list-none">
                     <span>{questionText}</span>
-                    <span className="text-teal text-xs group-open:rotate-180 transition-transform">
+                    <span className="text-teal text-sm group-open:rotate-180 transition-transform">
                       ▼
                     </span>
                   </summary>
-                  <p className="mt-2 text-[11px] leading-relaxed text-navy/70 border-t border-navy/5 pt-1.5">
+                  <p className="mt-2 text-xs leading-relaxed text-navy/70 border-t border-navy/5 pt-1.5">
                     {answerText}
                   </p>
                 </details>

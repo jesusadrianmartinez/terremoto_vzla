@@ -17,7 +17,7 @@ export const TransparencySection = () => {
       <div className="container-page px-4 grid gap-6 lg:grid-cols-12 items-start">
         <div className="lg:col-span-12 space-y-4">
           <div>
-            <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-2">
+            <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-2">
               {t.sectionTitle}
             </h3>
             <ul className="grid sm:grid-cols-2 gap-2 text-xs font-medium text-navy/80">

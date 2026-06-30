@@ -35,18 +35,18 @@ export const UrgentNeedsSection = () => {
   return (
     <section className="py-6 bg-white">
       <div className="container-page px-4">
-        <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-3">
+        <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-3">
           {t.urgentNeedsTitle}
         </h3>
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
           {t.urgentNeeds.map((need) => {
             const IconComponent = NEED_ICON_MAP[need.id] || Droplet;
             return (
               <span
                 key={need.id}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-navy/5 bg-[#fcfbf7] px-3 py-1.5 text-xs font-bold text-navy shadow-2xs"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-navy/5 bg-[#fcfbf7] px-3 py-1.5 text-sm font-bold text-navy shadow-2xs"
               >
-                <IconComponent size={24} className="text-teal" />
+                <IconComponent size={30} className="text-teal" />
                 {need.label}
               </span>
             );

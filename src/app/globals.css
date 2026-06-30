@@ -23,6 +23,10 @@
     color: var(--color-navy);
     min-height: 100vh;
   }
+
+  button {
+    cursor: pointer!important;
+  }
 }
 
 /* 3. Utilidades compuestas (Capas de componentes) */

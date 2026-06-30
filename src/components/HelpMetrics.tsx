@@ -45,7 +45,7 @@ export const HelpMetrics = () => {
 
   return (
     <div className="lg:col-span-12 bg-white p-4 rounded-2xl border border-navy/10">
-      <h3 className="text-xs font-black uppercase tracking-wider text-navy mb-3 text-center lg:text-left">
+      <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-3 text-center lg:text-left">
         {t.title}
       </h3>
 
@@ -55,7 +55,7 @@ export const HelpMetrics = () => {
             key={stat.label}
             className="p-2 rounded-xl bg-[#fcfbf7] border border-navy/5 text-center flex flex-col justify-center min-h-17"
           >
-            <p className="text-[9px] font-bold uppercase tracking-wider text-navy/50">
+            <p className="text-xs font-bold uppercase tracking-wider text-navy/50">
               {stat.label}
             </p>
 
