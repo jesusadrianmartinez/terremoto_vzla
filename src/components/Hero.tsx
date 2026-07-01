@@ -31,9 +31,14 @@ export function Hero() {
             {t.subheading}
           </p>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-navy/80 md:text-lg">
-            {t.description}
-          </p>
+          {t.description.map((paragraph, index) => (
+            <p
+              className="mt-6 max-w-xl text-base leading-relaxed text-navy/80 md:text-lg"
+              key={index}
+            >
+              {paragraph}
+            </p>
+          ))}
 
           {/* Botones de Acción */}
           <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-4">
@@ -63,28 +68,34 @@ export function Hero() {
         </div>
 
         {/* Bloque Derecho: Imagen Fotográfica con Superposición Optimizada */}
-        <div className="relative aspect-4/3 w-full overflow-hidden rounded-[2.5rem] shadow-2xl shadow-navy/10 lg:aspect-square">
-          <Image
-            src="/la-guaira.jpg"
-            alt={t.imgAlt}
-            fill
-            className="object-cover"
-            priority
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
+        <div className="flex flex-col w-full gap-4 sm:relative sm:block sm:aspect-4/3 sm:overflow-hidden rounded-3xl sm:rounded-[2.5rem] shadow-2xl shadow-navy/10 lg:aspect-square">
+          {/* Contenedor de la Imagen: En móvil mantiene un aspecto fijo controlado separado */}
+          <div className="relative aspect-16/10 w-full overflow-hidden rounded-3xl sm:absolute sm:inset-0 sm:aspect-auto sm:rounded-none">
+            <Image
+              src="/la-guaira.jpg"
+              alt={t.imgAlt}
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            {/* Degradado oscuro sutil en la base: Solo visible cuando la tarjeta flota sobre ella */}
+            <div className="hidden sm:block absolute inset-0 bg-linear-to-t from-navy/80 via-navy/20 to-transparent" />
+          </div>
 
-          {/* Degradado oscuro sutil en la base */}
-          <div className="absolute inset-0 bg-linear-to-t from-navy/80 via-navy/20 to-transparent" />
-
-          {/* Tarjeta inferior */}
-          <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/90 p-6 backdrop-blur-sm border border-white/20 md:p-8 shadow-lg">
-            <span className="text-4xl" role="img" aria-label="solidaridad">
+          {/* Tarjeta de Información: Fluye abajo en móviles para no cortar texto, flota a partir de 'sm' */}
+          <div className="relative z-10 bg-white p-5 rounded-3xl border border-navy/5 shadow-md sm:absolute sm:bottom-6 sm:left-6 sm:right-6 sm:bg-white/90 sm:p-6 sm:backdrop-blur-sm sm:border-white/20 md:p-8 sm:shadow-lg">
+            <span
+              className="text-3xl sm:text-4xl"
+              role="img"
+              aria-label="solidaridad"
+            >
               🤝
             </span>
-            <h2 className="mt-3 text-2xl font-black text-navy md:text-3xl leading-tight">
+            <h2 className="mt-2 sm:mt-3 text-xl font-black text-navy sm:text-2xl md:text-3xl leading-tight">
               {t.cardTitle}
             </h2>
-            <p className="mt-2 text-sm font-semibold text-navy/85 leading-relaxed">
+            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm font-medium sm:font-semibold text-navy/85 leading-relaxed">
               {t.cardDescription}
             </p>
           </div>

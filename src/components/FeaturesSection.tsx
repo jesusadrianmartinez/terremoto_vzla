@@ -3,14 +3,14 @@
 import { useAppSelector } from "@/redux/hooks";
 import { featuresTranslations } from "@/data/sections/features";
 import {
-  Droplet,
   Utensils,
-  Pill,
-  Home,
+  HeartPulse,
   Truck,
-  Fuel,
+  Milestone,
+  KeyRound,
+  Bed,
   Wrench,
-  Wifi,
+  MessageSquare,
   ThumbsUp,
   FileText,
   Search,
@@ -20,15 +20,15 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-const AID_ICON_MAP: Record<string, LucideIcon> = {
-  water: Droplet,
-  food: Utensils,
-  medicine: Pill,
-  shelter: Home,
-  transport: Truck,
-  fuel: Fuel,
-  tools: Wrench,
-  connectivity: Wifi,
+export const AID_ICON_MAP: Record<string, LucideIcon> = {
+  Utensils: Utensils,
+  HeartPulse: HeartPulse,
+  Truck: Truck,
+  Milestone: Milestone,
+  KeyRound: KeyRound,
+  Bed: Bed,
+  Wrench: Wrench,
+  MessageSquare: MessageSquare,
 };
 
 const STEP_ICON_MAP: Record<number, LucideIcon> = {
@@ -56,7 +56,7 @@ export const FeaturesSection = () => {
             </h3>
             <div className="grid gap-3 grid-cols-2 sm:grid-cols-3">
               {t.aidAreas.map((item) => {
-                const IconComponent = AID_ICON_MAP[item.id] || Droplet;
+                const IconComponent = AID_ICON_MAP[item.id] || null;
                 return (
                   <div
                     key={item.id}
@@ -100,6 +100,9 @@ export const FeaturesSection = () => {
                     </div>
                     <p className="text-sm font-bold text-navy leading-tight">
                       {step.title}
+                    </p>
+                    <p className="text-xs text-navy/60 mt-0.5 leading-tight">
+                      {step.text}
                     </p>
                   </div>
                 );

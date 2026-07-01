@@ -2,7 +2,7 @@ export interface HeroTranslations {
   badge: string;
   titleHelp: string;
   subheading: string;
-  description: string;
+  description: string[];
   btnDonate: string;
   imgAlt: string;
   cardTitle: string;
@@ -13,37 +13,43 @@ export const heroTranslations: Record<"es" | "en" | "fr", HeroTranslations> = {
   es: {
     badge: "Emergencia Humanitaria",
     titleHelp: "HELP",
-    subheading: "Ayuda directa. Transparencia total. Esperanza para La Guaira.",
-    description:
-      "Una iniciativa ciudadana para brindar ayuda inmediata a las familias afectadas por el terremoto del 24 de junio de 2026 en Venezuela.",
-    btnDonate: "Donar ahora",
+    subheading: "Ayuda directa para familias afectadas en La Guaira",
+    description: [
+      "Somos Jesús y Mónica. Nuestras familias fueron afectadas directamente por el terremoto en el edificio Rita Mar Palace, entre Palmar Oeste y Los Corales, y en el edificio La Trinidad, en Playa Grande.",
+      "Creamos esta página para reunir apoyo, coordinar ayuda urgente y acompañar a nuestras familias y vecinos en este momento difícil.",
+    ],
+    btnDonate: "Ayudar ahora",
     imgAlt: "La Guaira Help - Vista de la región afectada",
-    cardTitle: "Solidaridad convertida en acción.",
+    cardTitle: "Una ayuda que llega a quienes la necesitan.",
     cardDescription:
-      "Apoyo directo, comprobantes públicos y actualización constante en tiempo real para todas las familias afectadas de la región.",
+      "Cada aporte nos ayuda a apoyar con comida, agua, transporte, medicamentos, herramientas y gastos urgentes para familias afectadas en La Guaira.",
   },
   en: {
     badge: "Humanitarian Emergency",
     titleHelp: "HELP",
-    subheading: "Direct aid. Full transparency. Hope for La Guaira.",
-    description:
-      "A citizen initiative providing immediate assistance to families affected by the June 24, 2026 earthquake in Venezuela.",
-    btnDonate: "Donate now",
-    imgAlt: "La Guaira Help - View of the affected region",
-    cardTitle: "Solidarity turned into action.",
+    subheading: "Direct relief for affected families in La Guaira",
+    description: [
+      "We are Jesús and Mónica. Our families were directly affected by the earthquake at the Rita Mar Palace building (between Palmar Oeste and Los Corales) and the La Trinidad building in Playa Grande.",
+      "We created this page to gather support, coordinate urgent relief, and stand by our families and neighbors during this difficult time.",
+    ],
+    btnDonate: "Help now",
+    imgAlt: "La Guaira Help - View of the affected area",
+    cardTitle: "Support that reaches those who need it most.",
     cardDescription:
-      "Direct support, public receipts, and constant updates in real-time for all affected families in the region.",
+      "Every contribution helps us provide food, water, transportation, medicine, tools, and urgent supplies for affected families in La Guaira.",
   },
   fr: {
-    badge: "Urgence Humanitaire",
+    badge: "Urgence humanitaire",
     titleHelp: "HELP",
-    subheading: "Aide directe. Transparence totale. Espoir pour La Guaira.",
-    description:
-      "Une initiative citoyenne visant à fournir une aide immédiate aux familles touchées par le tremblement de terre du 24 juin 2026 au Venezuela.",
-    btnDonate: "Faire un don",
+    subheading: "Aide directe aux familles touchées à La Guaira",
+    description: [
+      "Nous sommes Jesús et Mónica. Nos familles ont été directement touchées par le tremblement de terre à l'édifice Rita Mar Palace (entre Palmar Oeste et Los Corales) et à l'édifice La Trinidad à Playa Grande.",
+      "Nous avons créé ce site pour rassembler du soutien, coordonner l'aide d'urgence et accompagner nos familles et nos voisins dans ces moments difficiles.",
+    ],
+    btnDonate: "Aider maintenant",
     imgAlt: "La Guaira Help - Vue de la région touchée",
-    cardTitle: "La solidarité transformée en action.",
+    cardTitle: "Une aide concrète pour ceux qui en ont vraiment besoin.",
     cardDescription:
-      "Soutien direct, justificatifs publics et mises à jour constantes en temps réel pour toutes les familles touchées de la région.",
+      "Chaque don nous permet de fournir de la nourriture, de l'eau, du transport, des médicaments, des outils et de couvrir les dépenses urgentes des familles touchées à La Guaira.",
   },
 };

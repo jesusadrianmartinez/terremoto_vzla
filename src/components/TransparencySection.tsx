@@ -20,6 +20,11 @@ export const TransparencySection = () => {
             <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-2">
               {t.sectionTitle}
             </h3>
+            {t.sectionParagraph.map((paragraph, idx) => (
+              <p key={idx} className="text-sm text-navy/80 mb-2">
+                {paragraph}
+              </p>
+            ))}
             <ul className="grid sm:grid-cols-2 gap-2 text-xs font-medium text-navy/80">
               {t.transparencyPoints.map((point, idx) => (
                 <li key={idx} className="flex items-start gap-1.5">
