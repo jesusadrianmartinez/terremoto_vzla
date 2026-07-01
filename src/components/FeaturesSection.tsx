@@ -84,7 +84,7 @@ export const FeaturesSection = () => {
             <h3 className="text-sm font-black uppercase tracking-wider text-navy mb-4">
               {t.howItWorksTitle}
             </h3>
-            <div className="grid grid-cols-3 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2">
               {t.steps.map((step) => {
                 const StepIcon = STEP_ICON_MAP[step.number] || ThumbsUp;
                 return (

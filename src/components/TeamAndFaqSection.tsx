@@ -25,11 +25,14 @@ export const TeamAndFaqSection = () => {
             <div className="text-xs text-navy/80 space-y-1">
               <p>
                 <strong>{labels.coordinationLabel}:</strong>{" "}
-                {teamData.coordination[language] || teamData.coordination["es"]}
+                {teamData.coordination[language]}
               </p>
               <p className="text-xs leading-tight">
                 <strong>{labels.venezuelaLabel}:</strong>{" "}
-                {teamData.venezuela[language] || teamData.venezuela["es"]}
+                {teamData.venezuela[language]}
+              </p>
+              <p className="text-xs leading-tight">
+                {teamData.parragraph[language]}
               </p>
             </div>
           </div>
@@ -62,23 +65,31 @@ export const TeamAndFaqSection = () => {
           </h3>
           <div className="space-y-1.5">
             {faqsData.slice(0, 5).map((faq, index) => {
-              const questionText = faq.question[language] || faq.question["es"];
-              const answerText = faq.answer[language] || faq.answer["es"];
+              const questionText = faq.question[language];
+              const answerText = faq.answer[language];
 
               return (
                 <details
                   key={index}
-                  className="group rounded-xl border border-navy/10 bg-[#fcfbf7] p-3 list-none [&_summary::-webkit-details-marker]:hidden"
+                  className="group rounded-xl border border-navy/10 bg-[#fcfbf7] p-3 list-none [&_summary::-webkit-details-marker]:hidden transition-all duration-500 ease-in-out"
                 >
-                  <summary className="flex cursor-pointer items-center justify-between text-sm font-bold text-navy outline-none list-none">
+                  <summary className="flex cursor-pointer items-center justify-between text-sm font-bold text-navy outline-none list-none select-none transition-all duration-500 ease-in-out">
                     <span>{questionText}</span>
-                    <span className="text-teal text-sm group-open:rotate-180 transition-transform">
+                    {/* Ralentizamos el giro del triángulo para que vaya a la par */}
+                    <span className="text-teal text-sm group-open:rotate-180 transition-transform duration-500 ease-in-out">
                       ▼
                     </span>
                   </summary>
-                  <p className="mt-2 text-xs leading-relaxed text-navy/70 border-t border-navy/5 pt-1.5">
-                    {answerText}
-                  </p>
+
+                  {/* Contenedor Grid con una transición de 500ms y curva personalizada */}
+                  <div className="grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+                    <div className="overflow-hidden">
+                      {/* El fade-in del texto ahora acompaña perfectamente el estiramiento */}
+                      <p className="mt-2 text-xs leading-relaxed text-navy/70 border-t border-navy/5 pt-1.5 opacity-0 group-open:opacity-100 transition-opacity duration-500 ease-in-out">
+                        {answerText}
+                      </p>
+                    </div>
+                  </div>
                 </details>
               );
             })}

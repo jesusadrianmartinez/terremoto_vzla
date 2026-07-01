@@ -97,18 +97,22 @@ export const solicitarAyudaFields: FormField[] = [
 // 2. Campos para el Formulario de OFRECER AYUDA
 export const ofrecerAyudaFields: FormField[] = [
   {
-    key: "firstName",
-    label: { es: "Nombre", en: "First name", fr: "Prénom" },
+    key: "fullName",
+    label: { es: "Nombre completo", en: "Full name", fr: "Nom complet" },
     inputType: "text",
-    placeholder: { es: "Tu nombre", en: "Your name", fr: "Votre prénom" },
-    autoComplete: "given-name",
+    placeholder: {
+      es: "Tu nombre y apellido",
+      en: "Your full name",
+      fr: "Votre nom et prénom",
+    },
+    autoComplete: "name",
     rules: [
       {
         type: "required",
         message: {
-          es: "Ingresa tu nombre.",
-          en: "Enter your name.",
-          fr: "Veuillez saisir votre prénom.",
+          es: "Ingresa tu nombre completo.",
+          en: "Enter your full name.",
+          fr: "Veuillez saisir votre nom complet.",
         },
       },
     ],

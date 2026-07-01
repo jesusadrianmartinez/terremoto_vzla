@@ -7,7 +7,8 @@ import { footerTranslations } from "@/data/sections/footer";
 
 const FOOTER_LINKS = [
   { key: "inicio", href: "#inicio" },
-  { key: "transparencia", href: "#transparencia" },
+  { key: "transparencia", href: "#about" },
+  { key: "avance", href: "#transparencia" },
   { key: "solicitar", href: "#solicitar" },
   { key: "ofrecer", href: "#ofrecer" },
 ] as const;
@@ -50,6 +51,10 @@ export function Footer() {
             height={80}
             className="h-auto w-56 object-contain"
           />
+          <p className="text-sm text-navy/70 max-w-3xs">{t.logotext}</p>
+          <p className="text-xs text-navy/50 mt-2">
+            <strong>{t.madeby}</strong>
+          </p>
         </div>
 
         {/* Enlaces Rápidos */}

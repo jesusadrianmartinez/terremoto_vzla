@@ -2,10 +2,13 @@ export interface FooterTranslations {
   ctaHeading: string;
   ctaText: string;
   ctaButton: string;
+  logotext: string;
+  madeby: string;
   quickLinksTitle: string;
   links: {
     inicio: string;
     transparencia: string;
+    avance: string;
     solicitar: string;
     ofrecer: string;
   };
@@ -19,14 +22,18 @@ export const footerTranslations: Record<
 > = {
   es: {
     ctaHeading:
-      "El terremoto ha dejado a muchas familias enfrentando pérdidas, incertidumbre y necesidades urgentes.",
+      "El terremoto dejó a muchas familias enfrentando pérdidas, incertidumbre y decisiones urgentes.",
     ctaText:
-      "Cada aporte puede convertirse en agua, alimentos, refugio, transporte o herramientas para quienes hoy siguen luchando por salir adelante.",
-    ctaButton: "Donar ahora",
+      "Cada aporte puede ayudar con alimentos, medicinas, transporte, gastos funerarios, nuevos alquileres y cosas básicas para habitar un nuevo espacio.",
+    ctaButton: "Ayudar ahora",
+    logotext:
+      "Una familia organizando ayuda para nuestras familias, vecinos y personas afectadas en La Guaira.",
+    madeby: "Hecho por Neurona Digital IA",
     quickLinksTitle: "Enlaces rápidos",
     links: {
       inicio: "Inicio",
-      transparencia: "Transparencia",
+      transparencia: "Nuestra historia",
+      avance: "Avances de la ayuda",
       solicitar: "Solicitar ayuda",
       ofrecer: "Ofrecer ayuda",
     },
@@ -35,14 +42,18 @@ export const footerTranslations: Record<
   },
   en: {
     ctaHeading:
-      "The earthquake has left many families facing losses, uncertainty, and urgent needs.",
+      "The earthquake has left many families facing loss, uncertainty, and urgent decisions.",
     ctaText:
-      "Every contribution can turn into water, food, shelter, transportation, or tools for those who are still fighting to move forward today.",
-    ctaButton: "Donate now",
+      "Every contribution can help provide food, medicine, transportation, funeral expenses, new rentals, and basic essentials to settle into a new space.",
+    ctaButton: "Help now",
+    logotext:
+      "A family organizing relief efforts for our own families, neighbors, and affected individuals in La Guaira.",
+    madeby: "Made by Neurona Digital IA",
     quickLinksTitle: "Quick links",
     links: {
       inicio: "Home",
-      transparencia: "Transparency",
+      transparencia: "Our story",
+      avance: "Aid updates",
       solicitar: "Request help",
       ofrecer: "Offer help",
     },
@@ -51,18 +62,22 @@ export const footerTranslations: Record<
   },
   fr: {
     ctaHeading:
-      "Le tremblement de terre a laissé de nombreuses familles face à des pertes, de l'incertitude et des besoins urgents.",
+      "Le séisme a laissé de nombreuses familles face aux pertes, à l'incertitude et à des décisions urgentes.",
     ctaText:
-      "Chaque contribution puede se transformer en eau, nourriture, abri, transport ou outils pour ceux qui luttent encore pour aller de l'avant aujourd'hui.",
-    ctaButton: "Faire un don",
+      "Chaque don puede aider à fournir de la nourriture, des médicaments, du transport, à couvrir des frais funéraires, de nouveaux loyers et des biens essentiels pour s'installer dans un nouvel espace.",
+    ctaButton: "Aider maintenant",
+    logotext:
+      "Une famille qui organise les secours pour ses propres proches, ses voisins et les personnes touchées à La Guaira.",
+    madeby: "Propulsé par Neurona Digital IA",
     quickLinksTitle: "Liens rapides",
     links: {
       inicio: "Accueil",
-      transparencia: "Transparence",
+      transparencia: "Notre histoire",
+      avance: "Suivi de l'aide",
       solicitar: "Demander de l'aide",
       ofrecer: "Offrir de l'aide",
     },
     contactTitle: "Contact",
-    closingCredits: "La Guaira c'est nous tous.",
+    closingCredits: "La Guaira, c'est nous tous.",
   },
 };

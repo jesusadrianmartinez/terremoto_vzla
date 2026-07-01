@@ -13,7 +13,7 @@ export const AboutSection = () => {
   const currentMission = missionData[language] || missionData.es;
 
   return (
-    <section className="py-8 md:py-10 bg-[#fcfbf7]">
+    <section id="about" className="py-8 md:py-10 bg-[#fcfbf7]">
       <div className="container-page px-4 grid gap-6 md:grid-cols-12 items-stretch">
         {/* Emergencia Humanitaria */}
         <div className="md:col-span-3 flex flex-col justify-between">

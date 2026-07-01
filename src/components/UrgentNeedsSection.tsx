@@ -3,28 +3,28 @@
 import { useAppSelector } from "@/redux/hooks";
 import { transparencyTranslations } from "@/data/sections/transparency";
 import {
-  Droplet,
+  KeyRound,
+  Bed,
   Utensils,
-  Pill,
-  Home,
-  Fuel,
-  Wrench,
-  Lightbulb,
+  HeartPulse,
   Truck,
-  Wifi,
-  type LucideIcon,
+  Milestone,
+  Wrench,
+  MessageSquare,
+  Droplet,
+  LucideIcon,
 } from "lucide-react";
 
-const NEED_ICON_MAP: Record<string, LucideIcon> = {
-  water: Droplet,
-  food: Utensils,
-  medicine: Pill,
-  shelter: Home,
-  fuel: Fuel,
-  tools: Wrench,
-  lighting: Lightbulb,
-  transport: Truck,
-  connectivity: Wifi,
+export const NEED_ICON_MAP: Record<string, LucideIcon> = {
+  KeyRound: KeyRound,
+  Bed: Bed,
+  Utensils: Utensils,
+  HeartPulse: HeartPulse,
+  Truck: Truck,
+  Milestone: Milestone,
+  Wrench: Wrench,
+  MessageSquare: MessageSquare,
+  Droplet: Droplet,
 };
 
 export const UrgentNeedsSection = () => {
@@ -40,7 +40,7 @@ export const UrgentNeedsSection = () => {
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
           {t.urgentNeeds.map((need) => {
-            const IconComponent = NEED_ICON_MAP[need.id] || Droplet;
+            const IconComponent = NEED_ICON_MAP[need.id] || null;
             return (
               <span
                 key={need.id}
