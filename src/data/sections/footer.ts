@@ -28,7 +28,7 @@ export const footerTranslations: Record<
     ctaButton: "Ayudar ahora",
     logotext:
       "Una familia organizando ayuda para nuestras familias, vecinos y personas afectadas en La Guaira.",
-    madeby: "Hecho por Neurona Digital IA",
+    madeby: "Hecho por ",
     quickLinksTitle: "Enlaces rápidos",
     links: {
       inicio: "Inicio",
@@ -48,7 +48,7 @@ export const footerTranslations: Record<
     ctaButton: "Help now",
     logotext:
       "A family organizing relief efforts for our own families, neighbors, and affected individuals in La Guaira.",
-    madeby: "Made by Neurona Digital IA",
+    madeby: "Made by ",
     quickLinksTitle: "Quick links",
     links: {
       inicio: "Home",
@@ -68,7 +68,7 @@ export const footerTranslations: Record<
     ctaButton: "Aider maintenant",
     logotext:
       "Une famille qui organise les secours pour ses propres proches, ses voisins et les personnes touchées à La Guaira.",
-    madeby: "Propulsé par Neurona Digital IA",
+    madeby: "Propulsé par ",
     quickLinksTitle: "Liens rapides",
     links: {
       inicio: "Accueil",

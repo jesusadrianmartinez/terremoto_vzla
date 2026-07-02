@@ -52,9 +52,6 @@ export function Footer() {
             className="h-auto w-56 object-contain"
           />
           <p className="text-sm text-navy/70 max-w-3xs">{t.logotext}</p>
-          <p className="text-xs text-navy/50 mt-2">
-            <strong>{t.madeby}</strong>
-          </p>
         </div>
 
         {/* Enlaces Rápidos */}
@@ -92,8 +89,21 @@ export function Footer() {
       </div>
 
       {/* Créditos de Cierre */}
-      <div className="border-t border-navy/10 py-6 text-center text-xs font-bold tracking-wide text-teal bg-navy">
-        {t.closingCredits} <span className="text-coral">❤️</span>
+      <div className="border-t border-navy/10 py-6 text-center text-sm font-bold tracking-wide text-teal bg-navy">
+        <p>
+          {t.closingCredits} <span className="text-coral">❤️</span>
+        </p>
+        <p className="text-xs text-black/45 mt-4">
+          {t.madeby}
+          <a
+            href="https://neuronadigital.cl/"
+            className="text-xs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Neurona Digital IA
+          </a>
+        </p>
       </div>
     </footer>
   );
