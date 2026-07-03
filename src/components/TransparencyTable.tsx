@@ -67,7 +67,7 @@ export function TransparencyTable() {
                     {row.date}
                   </td>
                   <td className="p-2 sm:p-2.5 font-medium" title={row.concept}>
-                    {row.concept}
+                    {row.concept[language] || row.concept.es}
                   </td>
                   <td
                     className={`p-2 sm:p-2.5 font-bold xs:whitespace-nowrap ${isReceived ? "text-teal" : "text-coral"}`}

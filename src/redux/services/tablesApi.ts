@@ -26,10 +26,14 @@ export const tablesApi = createApi({
 
         return rows.map((row) => ({
           date: row[0] || "",
-          concept: row[1] || "",
-          amount: row[2] || "",
-          currency: row[3] || "",
-          status: row[4] || "",
+          concept: {
+            es: row[1] || "",
+            en: row[2] || "",
+            fr: row[3] || "",
+          },
+          amount: row[4] || "",
+          currency: row[5] || "",
+          status: row[6] || "",
         }));
       },
     }),

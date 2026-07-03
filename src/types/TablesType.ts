@@ -1,6 +1,8 @@
 export type BalanceTuple = [
   fecha: string,
   concepto: string,
+  concepto_en: string,
+  concepto_fr: string,
   monto: string,
   moneda: string,
   estado: "Recibido" | "Completado" | string,
@@ -14,7 +16,7 @@ export type BalanceResponse = {
 
 export interface BalanceRow {
   date: string;
-  concept: string;
+  concept: { es: string; en: string; fr: string };
   amount: string;
   currency: string;
   status: string;
