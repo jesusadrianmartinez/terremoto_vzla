@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { useGetMetricsDataQuery } from "@/redux/services/tablesApi";
 import {
@@ -15,46 +16,51 @@ export const HelpMetrics = () => {
   const t = helpMetricsTranslations[language] || helpMetricsTranslations.es;
   const rawMap = rawValueTranslations[language] || rawValueTranslations.es;
 
-  const firstRow = metrics?.[0];
-
   const formatRawValue = (val: string | undefined, fallback: string) => {
     if (!val) return fallback;
     return rawMap[val] || val;
   };
 
-  const displayStats = [
-    {
-      label: t.fundsRaised,
-      value: firstRow?.fundsRaised || "$0,00",
-      isFullWidthOnMobile: false,
-    },
-    {
-      label: t.fundsUsed,
-      value: firstRow?.fundsUsed || "$0,00",
-      isFullWidthOnMobile: false,
-    },
-    {
-      label: t.peopleHelped,
-      value: firstRow?.peopleHelped || "0",
-      isFullWidthOnMobile: false,
-    },
-    {
-      label: t.familiesAssisted,
-      value: firstRow?.familiesAssisted || "0",
-      isFullWidthOnMobile: false,
-    },
-    {
-      label: t.rescuersSupported,
-      value: firstRow?.rescuersSupported || "0",
-      isFullWidthOnMobile: false,
-    },
-    {
-      label: t.lastUpdate,
-      value: formatRawValue(firstRow?.lastUpdate, rawMap["Pendiente"]),
-      // Marcamos esta métrica para que se estire por completo en pantallas pequeñas
-      isFullWidthOnMobile: true,
-    },
-  ];
+  // Memorizamos el cálculo del array para que reaccione instantáneamente al cambio de idioma o datos
+  const displayStats = useMemo(() => {
+    const firstRow = { es: metrics?.[0], en: metrics?.[1], fr: metrics?.[2] };
+
+    return [
+      {
+        label: t.fundsRaised,
+        value: firstRow?.[language]?.fundsRaised || "$0,00",
+        isFullWidthOnMobile: false,
+      },
+      {
+        label: t.fundsUsed,
+        value: firstRow?.[language]?.fundsUsed || "$0,00",
+        isFullWidthOnMobile: false,
+      },
+      {
+        label: t.peopleHelped,
+        value: firstRow?.[language]?.peopleHelped || "0",
+        isFullWidthOnMobile: false,
+      },
+      {
+        label: t.familiesAssisted,
+        value: firstRow?.[language]?.familiesAssisted || "0",
+        isFullWidthOnMobile: false,
+      },
+      {
+        label: t.rescuersSupported,
+        value: firstRow?.[language]?.rescuersSupported || "0",
+        isFullWidthOnMobile: false,
+      },
+      {
+        label: t.lastUpdate,
+        value: formatRawValue(
+          firstRow?.[language]?.lastUpdate,
+          rawMap["Pendiente"],
+        ),
+        isFullWidthOnMobile: true,
+      },
+    ];
+  }, [language, metrics, t, rawMap]); // Se ejecuta cada vez que cambia cualquiera de estos valores
 
   if (isError) {
     return (
@@ -70,13 +76,13 @@ export const HelpMetrics = () => {
         {t.title}
       </h3>
 
-      {/* Grid adaptativo: grid-cols-2 en móvil, sube a sm:grid-cols-3 y lg:grid-cols-6 */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {displayStats.map((stat) => (
           <div
             key={stat.label}
-            /* col-span-2 hace que la fecha ocupe ambas columnas en móvil. En sm+ vuelve a col-span-1 de forma nativa */
-            className={`p-3 rounded-xl bg-[#fcfbf7] border border-navy/5 text-center flex flex-col justify-start min-h-19 transition-all col-span-1 sm:col-span-2`}
+            className={`p-3 rounded-xl bg-[#fcfbf7] border border-navy/5 text-center flex flex-col justify-start min-h-19 transition-all ${
+              stat.isFullWidthOnMobile ? "col-span-2" : "col-span-1"
+            } sm:col-span-1`}
           >
             <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-navy/50 leading-tight">
               {stat.label}
